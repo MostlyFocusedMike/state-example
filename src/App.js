@@ -1,26 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const postsUrl = 'https://jsonplaceholder.typicode.com/posts'
+
+const postAdapter = {
+    getPosts: async () => {
+        const posts = await fetch(postsUrl).then(r => r.json()).catch(console.log)
+        console.log('posts: ', posts);
+        return posts;
+    }
+}
+
+class App extends React.Component {
+    state = {
+        posts: []
+    }
+
+    componentDidMount() {
+        console.log('hello', this.state.posts)
+        postAdapter.getPosts()
+    }
+
+    render() {
+        return (
+            <div className="App">
+                Hello there
+            </div>
+        )
+    }
+
 }
 
 export default App;
