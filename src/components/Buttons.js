@@ -1,12 +1,6 @@
 import React from 'react';
 
-const pageLimit = 9
-
 class Buttons extends React.Component {
-    state = { // replace this with upper state
-        indexes: []
-    }
-
     handleClick = (e) => {
         e.preventDefault();
         const pageNum = e.target.value;
@@ -14,7 +8,7 @@ class Buttons extends React.Component {
     }
 
     generateButtons = () => {
-        const {total} = this.props
+        const {total, pageLimit} = this.props
         const num = Math.ceil(total / pageLimit);
         const arr = Array(num).fill('');
         console.log(arr.length);
@@ -27,11 +21,11 @@ class Buttons extends React.Component {
     }
 
     getIndexes = (pageNum) => {
-        const {total} = this.props;
+        const {total, pageLimit} = this.props;
         console.log('pageNum: ', pageNum);
         const upper = pageLimit * pageNum;
         let indexes = [...Array(upper).keys()];
-        // TODO: fix upper limit issue
+        console.log('indexes: ', indexes);
         if (indexes.length > total) {
             const overflow = -1 * (total - (indexes.length - pageLimit));
             console.log('overflow: ', overflow);
@@ -39,7 +33,7 @@ class Buttons extends React.Component {
         }
         console.log('indexes: ', indexes.slice(-9));
         console.log('this.props: ', this.props);
-        this.props.setIndexes(indexes.slice(-9))
+        this.props.setIndexes(indexes.slice(-1 * pageLimit))
     }
 
 
