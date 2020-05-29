@@ -33,7 +33,6 @@ class App extends React.Component {
 
     render() {
         const { posts, indexes } = this.state;
-        console.log('posts: ', posts);
         return (
             <div className="App">
                 Hello there

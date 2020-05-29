@@ -15,7 +15,6 @@ class Buttons extends React.Component {
 
     generateButtons = () => {
         const {total} = this.props
-        console.log('total: ', total);
         const num = Math.ceil(total / pageLimit);
         const arr = Array(num).fill('');
         console.log(arr.length);
@@ -34,8 +33,9 @@ class Buttons extends React.Component {
         let indexes = [...Array(upper).keys()];
         // TODO: fix upper limit issue
         if (indexes.length > total) {
-            console.log('index here: ', );
-            indexes = indexes.slice(0, total)
+            const overflow = -1 * (total - (indexes.length - pageLimit));
+            console.log('overflow: ', overflow);
+            indexes = indexes.slice(0,total).slice(overflow)
         }
         console.log('indexes: ', indexes.slice(-9));
         console.log('this.props: ', this.props);
