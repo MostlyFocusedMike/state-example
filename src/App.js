@@ -1,5 +1,6 @@
 import React from 'react';
-import Posts from './components/Posts'
+import Posts from './components/Posts';
+import Buttons from './components/Buttons';
 
 import './App.css';
 
@@ -32,7 +33,12 @@ class App extends React.Component {
             <div className="App">
                 Hello there
                 <div id="posts">
-                    { posts && <Posts posts={posts} /> }
+                    { posts &&
+                        <>
+                            <Buttons total={posts.length} />
+                            <Posts posts={posts} />
+                        </>
+                    }
                 </div>
             </div>
         )
