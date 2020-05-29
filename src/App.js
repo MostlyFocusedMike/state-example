@@ -15,7 +15,7 @@ const postAdapter = {
 
 class App extends React.Component {
     state = {
-        posts: null
+        posts: null,
     }
 
     componentDidMount() {
@@ -27,7 +27,7 @@ class App extends React.Component {
     }
 
     render() {
-        const { posts } = this.state;
+        const { posts, indexes } = this.state;
         console.log('posts: ', posts);
         return (
             <div className="App">
