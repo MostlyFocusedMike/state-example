@@ -38,6 +38,7 @@ class Buttons extends React.Component {
             indexes = indexes.slice(0, total)
         }
         console.log('indexes: ', indexes.slice(-9));
+        console.log('this.props: ', this.props);
         this.props.setIndexes(indexes.slice(-9))
     }
 

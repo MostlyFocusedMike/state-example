@@ -16,6 +16,7 @@ const postAdapter = {
 class App extends React.Component {
     state = {
         posts: null,
+        indexes: [0,1,2,3,4,5,6,7,9] // use PageLimit
     }
 
     componentDidMount() {
@@ -24,6 +25,10 @@ class App extends React.Component {
             .then(posts => {
                 this.setState({ posts });
             })
+    }
+
+    setIndexes = (indexes) => {
+        this.setState({ indexes })
     }
 
     render() {
@@ -35,8 +40,8 @@ class App extends React.Component {
                 <div id="posts">
                     { posts &&
                         <>
-                            <Buttons total={posts.length} />
-                            <Posts posts={posts} />
+                            <Buttons total={ posts.length } setIndexes={ this.setIndexes } />
+                            <Posts posts={ posts } indexes={ indexes }/>
                         </>
                     }
                 </div>
