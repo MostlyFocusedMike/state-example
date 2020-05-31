@@ -1,5 +1,5 @@
 import React from 'react';
-import uuid from 'uuid';
+import { v4 as uuid } from 'uuid';
 
 class Buttons extends React.Component {
     handleClick = (e) => {
@@ -14,8 +14,8 @@ class Buttons extends React.Component {
         const arr = Array(num).fill('');
         return arr.map((_,idx) => <button
             onClick={this.handleClick}
-            value={ idx + 1 }
-            key={ uuid.v4() }
+            value={idx + 1}
+            key={uuid()}
         >
             {idx + 1 }
         </button>)

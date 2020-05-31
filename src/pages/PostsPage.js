@@ -1,7 +1,7 @@
 import React from 'react';
 import Posts from '../components/Posts';
 import Buttons from '../components/Buttons';
-import postAdapter from '../adapters/posts-adapter';
+import { getPosts } from '../adapters/posts-adapter';
 
 class PostsPage extends React.Component {
     pageLimit = 7;
@@ -12,7 +12,7 @@ class PostsPage extends React.Component {
 
     componentDidMount() {
         document.title = 'Posts'
-        postAdapter.getPosts()
+        getPosts()
             .then(posts => {
                 this.setState({ posts });
             })
