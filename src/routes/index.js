@@ -6,6 +6,8 @@ import {
     Link
   } from "react-router-dom";
 import PostsPage from '../pages/PostsPage';
+import HomePage from '../pages/HomePage';
+import PostPage from '../pages/PostPage';
 
 const Routes = () => {
     return (
@@ -23,13 +25,9 @@ const Routes = () => {
           </nav>
 
           <Switch>
-            <Route path="/posts">
-              <PostsPage />
-            </Route>
-            <Route path="/">
-              <>
-                <h1>Hi</h1>
-              </>
+            <Route path="/posts/:postId" component={ PostPage } />
+            <Route path="/posts" component={ PostsPage } />
+            <Route path="/" component={ HomePage }>
             </Route>
           </Switch>
         </div>

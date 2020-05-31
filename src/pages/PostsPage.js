@@ -1,15 +1,7 @@
 import React from 'react';
 import Posts from '../components/Posts';
 import Buttons from '../components/Buttons';
-
-const postsUrl = 'https://jsonplaceholder.typicode.com/posts'
-
-const postAdapter = {
-    getPosts: async () => {
-        const posts = await fetch(postsUrl).then(r => r.json()).catch(console.log)
-        return posts;
-    }
-}
+import postAdapter from '../adapters/posts-adapter';
 
 class PostsPage extends React.Component {
     pageLimit = 7;
@@ -19,7 +11,7 @@ class PostsPage extends React.Component {
     }
 
     componentDidMount() {
-        console.log('hello', this.state.posts)
+        document.title = 'Posts'
         postAdapter.getPosts()
             .then(posts => {
                 this.setState({ posts });
